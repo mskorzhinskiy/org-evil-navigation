@@ -10,6 +10,22 @@ Each function tries to narrow things down without narrowing too much. See the
 
 * Installation
 
+#+begin_src elisp
+(use-package org-evil-navigation)
+#+end_src
+
+** Doom emacs
+
+Package recipe:
+
+#+begin_src elisp
+(package! org-evil-navigation
+  :recipe (:repo "mskorzhinskiy/org-evil-navigation"
+           :host github :branch "main"))
+#+end_src
+
+* Example keybindings setup
+
 For doom emacs:
 #+begin_src elisp
 (map! :map org-mode-map
@@ -25,13 +41,6 @@ For vanilla emacs:
 (define-key org-mode-map (kbd "M-d") #'org-evil-navigation-down)
 (define-key org-mode-map (kbd "M-n") #'org-evil-navigation-next)
 (define-key org-mode-map (kbd "M-p") #'org-evil-navigation-prev)
-#+end_src
-
-Recipe for doom emacs package.el:
-#+begin_src elisp
-(package! org-evil-navigation
-  :recipe (:repo "mskorzhinskiy/org-evil-navigation"
-           :host github :branch "main"))
 #+end_src
 
 * Demo
