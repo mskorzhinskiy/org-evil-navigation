@@ -29,8 +29,8 @@ For vanilla emacs:
 
 Recipe for doom emacs package.el:
 #+begin_src elisp
-(package! org-ql-planning
-  :recipe (:repo "mskorzhinskiy/org-ql-planning"
+(package! org-evil-navigation
+  :recipe (:repo "mskorzhinskiy/org-evil-navigation"
            :host github :branch "main"))
 #+end_src
 
