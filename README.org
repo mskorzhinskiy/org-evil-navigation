@@ -1,0 +1,39 @@
+#+TITLE: Evil navigation in org
+
+Two pairs of navigation functions to jump around in org-mode buffers:
+
+ - Up/Down heading
+ - Next/Previous heading/item/paragraph
+
+Each function tries to narrow things down without narrowing too much. See the
+  demo the explanations.
+
+* Installation
+
+For doom emacs:
+#+begin_src elisp
+(map! :map org-mode-map
+  :n "C-h" #'org-evil-navigation-up
+  :n "C-l" #'org-evil-navigation-down
+  :n "C-j" #'org-evil-navigation-next
+  :n "C-k" #'org-evil-navigation-prev)
+#+end_src
+
+For vanilla emacs:
+#+begin_src elisp
+(define-key org-mode-map (kbd "M-u") #'org-evil-navigation-up)
+(define-key org-mode-map (kbd "M-d") #'org-evil-navigation-down)
+(define-key org-mode-map (kbd "M-n") #'org-evil-navigation-next)
+(define-key org-mode-map (kbd "M-p") #'org-evil-navigation-prev)
+#+end_src
+
+Recipe for doom emacs package.el:
+#+begin_src elisp
+(package! org-ql-planning
+  :recipe (:repo "mskorzhinskiy/org-ql-planning"
+           :host github :branch "main"))
+#+end_src
+
+* Demo
+
+[[file:demo.gif]]

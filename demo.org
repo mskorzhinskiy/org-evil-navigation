@@ -1,0 +1,25 @@
+Org-mode file for testing and demonstration of this module.
+
+* Heading one
+
+However, jump up on level 0 heading will reveal all the level 0 headlines.
+
+** Child 2 [1]
+** Navigation up will reveal hidden parents and will re-narrow to this parent
+
+However jumping up will not mess with narrowing or visiblity if *parent* is
+  already =visible=.
+
+*** Navigation will reveal hidden siblings
+*** Child 3 [b]
+*** Child 3 [c]
+
+However jumping to the sibling will not mess with narrowing or visiblity if
+  *sibling* is already =visible=.
+
+** Child 2 [3]
+* =Navigation will narrow to parent subtree if narrowing is enabled= (This is level 0 heading)
+** Child 2 [1]
+** Child 2 [2]
+*** Child 3 [a]
+*** Attempting to jump down on entry /without children/ will hide all the siblings
