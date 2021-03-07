@@ -19,6 +19,8 @@
 ;;
 ;;; Code:
 
+(require 'org)
+
 (defcustom org-evil-navigation-reveal-context 'minimal
   "Defines which context should be used when revealing is done.
 
