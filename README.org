@@ -33,6 +33,10 @@ For doom emacs:
   :n "C-l" #'org-evil-navigation-down
   :n "C-j" #'org-evil-navigation-next
   :n "C-k" #'org-evil-navigation-prev)
+(map! :map org-mode-map
+      :leader
+      (:prefix-map ("t" . "toggle")
+       :desc "Navigation regime" "n" #'org-evil-navigation-collapse-set))
 #+end_src
 
 For vanilla emacs:

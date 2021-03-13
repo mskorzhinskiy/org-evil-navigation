@@ -57,11 +57,38 @@ Allowed visibility spans are
                  (const tree)
                  (const canonical)))
 
+(defcustom org-evil-navigation-collpase-on-move nil
+  "If set to true, collpase previous heading, uncollapse next heading."
+  :group 'org
+  :type '(choice :tag "Revealing type"
+                 (const entry)
+                 (const subtree)
+                 (const children)
+                 (const children-and-entry)
+                 nil))
+
 (defun org-evil-navigation-hide ()
   "Collapse parent headline if there is parent headline."
   (save-excursion
     (while (org-up-heading-safe)
       (outline-hide-subtree))))
+
+;;;###autoload
+(defun org-evil-navigation-collapse-set ()
+  "Interactive function to control `org-evil-navigation-collpase-on-move' setting."
+  (interactive)
+  (if (not org-evil-navigation-collpase-on-move)
+    (let ((type (completing-read
+                 "Choose style:"
+                 (list 'entry
+                       'subtree
+                       'children
+                       'children-and-entry)
+                 nil t)))
+      (setq org-evil-navigation-collpase-on-move type)
+      (message (format "Collapse %s on navigation" type)))
+    (setq org-evil-navigation-collpase-on-move nil)
+    (message "Collapse on navigation disabled!")))
 
 (defun org-evil-navigation-reveal (narrow-to-subtree)
   "Reveal tree using `org-show-context' and narrow buffer to parent subtree.
@@ -73,7 +100,18 @@ details to reveal."
   (save-excursion
     (org-up-heading-safe)
     (when narrow-to-subtree
-      (org-narrow-to-subtree))))
+      (org-narrow-to-subtree)))
+  (cond ((string= org-evil-navigation-collpase-on-move 'entry)
+         (org-show-entry))
+        ((string= org-evil-navigation-collpase-on-move 'subtree)
+         (org-show-subtree))
+        ((string= org-evil-navigation-collpase-on-move 'children)
+         (org-show-children))
+        ((string= org-evil-navigation-collpase-on-move 'children-and-entry)
+         (org-show-entry)
+         (org-show-children))))
+
+(setq org-evil-navigation-collpase-on-move t)
 
 ;;;###autoload
 (defun org-evil-navigation-up ()
@@ -153,6 +191,8 @@ Revealing will be done only if object is unvisible."
          (should-reveal
           (and next-headline-visible
                (not (= old-point next-heading-point)))))
+    (when org-evil-navigation-collpase-on-move
+      (outline-hide-subtree))
     (when should-reveal
         (widen))
     (goto-char next-heading-point)
