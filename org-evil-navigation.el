@@ -147,7 +147,8 @@ hiearhy to be shown."
   (interactive)
   (if (not (save-excursion (org-goto-first-child)))
       ;; Hide details if there're no children
-      (org-evil-navigation-hide)
+      (if org-evil-navigation-collpase-on-move
+        (org-evil-navigation-hide))
     ;; Try to jump to the first one
     (let ((new-point
            (org-evil-navigation-exre
