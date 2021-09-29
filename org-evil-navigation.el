@@ -7,7 +7,7 @@
 ;; Created: January 31, 2021
 ;; Modified: January 31, 2021
 ;; Version: 0.0.1
-;; Keywords: Symbol’s value as variable is void: finder-known-keywords
+;; Keywords: outlines convenience
 ;; Homepage: https://github.com/rasmi/org-evil-navigation
 ;; Package-Requires: ((emacs "26.1"))
 ;;
