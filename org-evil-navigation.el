@@ -111,8 +111,6 @@ details to reveal."
          (org-show-entry)
          (org-show-children))))
 
-(setq org-evil-navigation-collpase-on-move t)
-
 ;;;###autoload
 (defun org-evil-navigation-up ()
   "Go /up/ to headline and possibly reveal subtree.
