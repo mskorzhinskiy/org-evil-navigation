@@ -1,4 +1,4 @@
-;;; org-evil-navigation.el --- navigation functions for org-mode -*- lexical-binding: t; -*-
+;;; org-evil-navigation.el --- Navigation functions for org-mode -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2021 Mikhail Skorzhisnkii
 ;;
